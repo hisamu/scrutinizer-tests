@@ -1,0 +1,30 @@
+build:
+  environment:
+    php:
+      version: 7.1
+  tests:
+    override:
+      -
+        command: './vendor/bin/phpunit --coverage-clover=test-coverage.xml'
+        coverage:
+          file: 'test-coverage.xml'
+          format: 'clover'
+tools:
+  php_code_sniffer:
+    config:
+      standard: "PSR2"
+checks:
+  php:
+    code_rating: true
+    duplication: true
+
+build_failure_conditions:
+  - 'project.metric_change("scrutinizer.test_coverage", < 0)'
+  - 'classes.rating(<= B).new.exists'
+  - 'operations.rating(<= C).new.exists'
+  - 'issues.severity(>= MAJOR).new.exists'
+  - 'issues.label("coding-style").new.exists'
+
+filter:
+  excluded_paths:
+    - "tests/"
