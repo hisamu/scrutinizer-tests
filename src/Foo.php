@@ -3,9 +3,12 @@
 namespace Acme;
 
 class Foo {
+
+
     function test ($foo)
     {
-        if($foo =='bar') {
+        if($foo =='bar') 
+        {
             return TRUE;
         }
 
