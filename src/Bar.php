@@ -2,6 +2,8 @@
 
 namespace Acme;
 
+
+
 class Bar
 {
     public function get()
@@ -31,10 +33,11 @@ class Bar
         return 'bar';
     }
 
-    public function set(int $x): int
-    {
+    public function set(int $x): int{
         $z = $x * 2;
 
         return $z;
+    
     }
+
 }
