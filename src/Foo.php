@@ -19,6 +19,10 @@ class Foo {
         echo 'zed';
     }
 
+    function bazz( $x_b) {
+        return 1;
+    }
+
 }
 
 ?>
