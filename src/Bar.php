@@ -8,7 +8,7 @@ class Bar
 {
     public function get()
     {
-        foreach (range(1, 9999) as $value) {
+        foreach (range(1, 9999) as $value){
             if (true) {
                 foreach (range(1, 9999) as $otherValue) {
                     echo $otherValue;
