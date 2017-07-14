@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Acme;
 
@@ -37,7 +37,11 @@ class Bar
         $z = $x * 2;
 
         return $z;
-    
+
+    }
+
+    function foo ($bazz) : void {
+        $x = 0;
     }
 
 }
