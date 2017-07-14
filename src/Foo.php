@@ -18,5 +18,8 @@ class Foo {
         echo 'zed';
     }
 
+    function bazz ($ab_c) {
+        return 1;
+    }
 }
 
