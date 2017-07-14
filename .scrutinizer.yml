@@ -10,7 +10,7 @@ build:
         analysis:
           file:
           format: 'general-checkstyle'
-      - '/bin/php scripts/cs.php'
+      - 'php scripts/cs.php'
       - 
         command: './vendor/bin/phpcs ./src --report=checkstyle --report-file=cs-data'
         analysis:
