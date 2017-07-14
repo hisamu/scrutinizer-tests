@@ -10,7 +10,7 @@ use Symfony\Component\Process\Process;
 const BASEPATH_COMMAND = 'git rev-parse --show-toplevel';
 const COMMITS_COMMAND = 'git log %s..HEAD --pretty=tformat:"%%H"';
 const FILES_COMMAND = 'git diff -M --name-only %s^ HEAD -- *.php';
-const LINES_COMMAND = "git blame -p %s | awk '/^(%s)/ {print $3}'";
+const LINES_COMMAND = "git blame -p %s | awk '{print $1, $3}'";
 const SCRUTINIZER_BRANCH_COMMAND = "git show HEAD --pretty=%P | awk '{print $1}'";
 const CS_COMMAND = '%s/vendor/bin/phpcs --standard=PSR2 %s --report=json';
 
@@ -28,13 +28,22 @@ $runCommand = function (string $command): array {
 $base = (bool) getenv('SCRUTINIZER') === false ? 'master' : current($runCommand(SCRUTINIZER_BRANCH_COMMAND));
 $basePath = current($runCommand(BASEPATH_COMMAND));
 $files = $runCommand(sprintf(FILES_COMMAND, $base));
-$commits = implode('|', $runCommand(sprintf(COMMITS_COMMAND, $base)));
+$commits = $runCommand(sprintf(COMMITS_COMMAND, $base));
 
 foreach ($files as $file) {
     $filePath = sprintf('%s/%s', $basePath, $file);
     $reports[$file] = $reports[$file] ?? [];
 
     $linesChanged = $runCommand(sprintf(LINES_COMMAND, $filePath, $commits));
+    $linesChanged = array_filter($linesChanged, function ($line) use ($commits) {
+        return in_array(substr($line, 0, 40), $commits);
+    });
+    $linesChanged = array_map(function($line) {
+        $line = explode(' ', $line);
+
+        return array_pop($line);
+    }, $linesChanged);
+
     $report = json_decode(current($runCommand(sprintf(CS_COMMAND, $basePath, $file))), true);
 
     if (!isset($report['files'])) {
