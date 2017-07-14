@@ -5,7 +5,6 @@
 
     <rule ref="PSR2"/>
     <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
-    <rule ref="Generic.Formatting.MultipleStatementAlignment"/>
     <rule ref="Generic.CodeAnalysis.EmptyStatement"/>
     <rule ref="Generic.CodeAnalysis.JumbledIncrementer"/>
     <rule ref="Generic.CodeAnalysis.UnconditionalIfStatement"/>
