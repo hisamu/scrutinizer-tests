@@ -4,7 +4,8 @@ build:
       version: 7.1
   tests:
     override:
-      - phpcs-run
+      - phpcs-run src
+      - phpcs-run tests
       -
         command: './vendor/bin/phpunit --coverage-clover=test-coverage.xml'
         coverage:
