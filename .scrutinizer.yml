@@ -5,7 +5,11 @@ build:
   tests:
     override:
       - './scripts/sniffer.sh'
-      - './scripts/cs.sh'
+      - 
+        command: './scripts/cs.sh'
+        analysis:
+          file:
+          format: 'general-checkstyle'
       - '/bin/php scripts/cs.php'
       - 
         command: './vendor/bin/phpcs ./src --report=checkstyle --report-file=cs-data'
