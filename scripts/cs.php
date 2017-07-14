@@ -34,6 +34,10 @@ foreach ($files as $file) {
     $linesChanged = $runCommand(sprintf(LINES_COMMAND, $filePath, $commits));
     $report = json_decode(current($runCommand(sprintf(CS_COMMAND, $basePath, $file))), true);
 
+    if (!isset($report['files'])) {
+        continue;
+    }
+
     $report = current($report['files']);
     $messages = $report['messages'];
 
