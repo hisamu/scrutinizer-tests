@@ -12,4 +12,13 @@ class Sample
     {
         return 'test';
     }
+
+
+    public function abc_def ($x) {
+
+        return 1;
+
+    }
+
+
 }
