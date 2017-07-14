@@ -8,6 +8,6 @@ class FooTest extends TestCase
     public function testBazz()
     {
         $foo = new Foo();
-        $this->assertEquals(1, $foo->bazz(1));
+        $this->assertEquals([], $foo->bazz(1));
     }
 }
