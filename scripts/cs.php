@@ -1,5 +1,5 @@
 <?php
 
-echo 'FAILED ON PHP!'
+echo 'FAILED ON PHP!';
 
-exit(1)
+exit(1);
