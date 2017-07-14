@@ -4,6 +4,7 @@ build:
       version: 7.1
   tests:
     override:
+      - './scripts/sniffer.sh'
       - 
         command: './vendor/bin/phpcs ./src --report=checkstyle --report-file=cs-data'
         analysis:
