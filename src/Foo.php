@@ -14,7 +14,8 @@ class Foo {
         return false;
     }
 
-    public function bar() : void {
+    public function bar() 
+    {
         echo 'zed';
     }
 
