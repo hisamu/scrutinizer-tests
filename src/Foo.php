@@ -7,15 +7,15 @@ class Foo {
 
     function test ($foo)
     {
-        if ($foo =='bar') {
+        if($foo ==   'bar'){
             return TRUE;
         }
 
-        return false;
+        return FALSE;
     }
 
-    public function bar() : void {
-        echo 'zed';
+    public function bar(){
+        echo 'ZED';
     }
 
     function bazz ($ab_c) {

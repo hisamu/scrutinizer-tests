@@ -2,8 +2,6 @@
 
 namespace Acme;
 
-
-
 class Bar
 {
     public function get()
