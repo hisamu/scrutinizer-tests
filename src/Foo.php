@@ -7,15 +7,14 @@ class Foo {
 
     function test ($foo)
     {
-        if ($foo =='bar') {
+        if($foo =='bar'){
             return TRUE;
         }
 
         return false;
     }
 
-    public function bar() 
-    {
+    public function bar(){
         echo 'zed';
     }
 
