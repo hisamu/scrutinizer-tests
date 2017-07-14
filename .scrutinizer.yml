@@ -8,7 +8,7 @@ build:
       - 
         command: './scripts/cs.sh'
         analysis:
-          file:
+          file: # empty
           format: 'general-checkstyle'
       - 'php scripts/cs.php'
       - 
