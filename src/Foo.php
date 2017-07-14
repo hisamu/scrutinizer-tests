@@ -19,10 +19,10 @@ class Foo {
     }
 
     function bazz ($ab_c) {
-        return array('1', '2');
+        return array();
     }
 
-    function zzz($x_A){ 
+    function zzz($x_A){
         if (1)
         {
             $b=0? 4 : 3 ;
