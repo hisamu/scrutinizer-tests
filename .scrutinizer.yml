@@ -4,8 +4,11 @@ build:
       version: 7.1
   tests:
     override:
-      - phpcs-run src
-      - phpcs-run tests
+      - 
+        command: './vendor/bin/phpcs ./src --report=checkstyle --report-file=cs-data'
+        analysis:
+          file: 'cs-data'
+          format: 'php-cs-checkstyle'
       -
         command: './vendor/bin/phpunit --coverage-clover=test-coverage.xml'
         coverage:
