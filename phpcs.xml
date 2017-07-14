@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <ruleset name="R2CustomCodeStyle">
-    <description>The Novactive Collection coding standard.</description>
+    <description>Coding standard.</description>
     <arg name="tab-width" value="4"/>
 
     <rule ref="PSR2"/>

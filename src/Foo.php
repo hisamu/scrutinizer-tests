@@ -19,7 +19,7 @@ class Foo {
     }
 
     function bazz ($ab_c) {
-        return 1;
+        return array('1', '2');
     }
 }
 
