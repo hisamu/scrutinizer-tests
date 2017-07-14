@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 use Symfony\Component\Console\Helper\Table;
+use Symfony\Component\Console\Helper\TableCell;
 use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\Process\Process;
 
@@ -62,10 +63,11 @@ foreach ($files as $file) {
 
 
 if ($hasError) {
-    $output->writeln('<fg=red>Some styling errors were detected:</fg=red>');
-
     $table = new Table($output);
-    $table->setHeaders(['File', 'Message']);
+    $table->setHeaders([
+        [new TableCell('<fg=red>Some styling errors were detected:</fg=red>', ['colspan' => 2])],
+        ['File', 'Message'],
+    ]);
 
     foreach ($reports as $file => $report) {
         if (!$report) {
@@ -77,7 +79,6 @@ if ($hasError) {
         });
     }
 
-    $table->setStyle('borderless');
     $table->render();
 
     exit(1);
