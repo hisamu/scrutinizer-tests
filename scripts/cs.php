@@ -20,7 +20,7 @@ $runCommand = function (string $command): array {
     $process = new Process($command);
     $process->run();
 
-    return explode("\n", trim($process->getOutput()));
+    return explode("\n", trim($process->getOutput())) ?: [];
 };
 
 $basePath = current($runCommand(BASEPATH_COMMAND));
