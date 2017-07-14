@@ -10,4 +10,10 @@ class SampleTest extends TestCase
         $sample = new Sample();
         $this->assertEquals(1, $sample->foo(1));
     }
+
+    public function testBar()
+    {
+        $sample = new Sample();
+        $this->assertEquals('test', $sample->bar());
+    }
 }
