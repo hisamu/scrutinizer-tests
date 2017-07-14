@@ -65,7 +65,7 @@ if ($hasError) {
     $output->writeln('<fg=red>Some styling errors were detected:</fg=red>');
 
     $table = new Table($output);
-    $table->setHeaders(['File', 'Line', 'Type', 'Message']);
+    $table->setHeaders(['File', 'Message']);
 
     foreach ($reports as $file => $report) {
         if (!$report) {
@@ -73,10 +73,11 @@ if ($hasError) {
         }
 
         array_walk($report, function (array $data) use ($file, $table) {
-            $table->addRow([$file, $data['line'], $data['type'], $data['message']]);
+            $table->addRow([sprintf('%s:%s', $file, $data['line']), $data['message']]);
         });
     }
 
+    $table->setStyle('borderless');
     $table->render();
 
     exit(1);
