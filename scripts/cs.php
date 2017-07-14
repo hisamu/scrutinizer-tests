@@ -10,9 +10,11 @@ const BASEPATH_COMMAND = 'git rev-parse --show-toplevel';
 const COMMITS_COMMAND = 'git log master..HEAD --pretty=tformat:"%H"';
 const FILES_COMMAND = 'git diff -M --name-only master^ HEAD -- *.php';
 const LINES_COMMAND = "git blame -p %s | awk '/^(%s)/ {print $3}'";
+const SCRUTINIZER_BRANCH_COMMAND = "git show HEAD --pretty=%P | awk '{print $1}'";
 const CS_COMMAND = '%s/vendor/bin/phpcs --standard=PSR2 %s --report=json';
 
 $output = new ConsoleOutput();
+$base = (bool) getenv('SCRUTINIZER') === false ? 'master' : current($runCommand(SCRUTINIZER_BRANCH_COMMAND));
 $reports = [];
 $hasError = false;
 
