@@ -8,7 +8,8 @@ class Sample
         return $number;
     }
 
-    public function bar(): string {
+    public function bar(): string
+    {
         return 'test';
     }
 }
